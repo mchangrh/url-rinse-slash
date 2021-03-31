@@ -1,4 +1,5 @@
 const { InteractionResponseType } = require('discord-interactions');
+const { ApplicationCommandOptionType } = require('slash-commands');
 const rinse = require('../utils/urlrinse.js')
 
 module.exports = {
@@ -6,15 +7,15 @@ module.exports = {
   description: 'unshorten & rinse URL',
   options: [
     {
-      name: 'URL',
+      name: 'url',
       description: 'URL to clean',
-      type: 3,
+      type: ApplicationCommandOptionType.STRING,
       required: true,
     }
   ],
   execute: async ({ interaction, response }) => {
-    const rawURL = ((interaction.data.options.find(opt => opt.name === 'URL') || {}).value || '').trim()
-    const longURL = await rinse.unshorten(rawURL)
+    const raw = ((interaction.data.options.find(opt => opt.name === 'url') || {}).value || '').trim()
+    const longURL = await rinse.unshorten(raw)
     return response({
       type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
       data: {

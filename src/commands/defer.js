@@ -1,4 +1,5 @@
 const { InteractionResponseType } = require('discord-interactions');
+const { ApplicationCommandOptionType } = require('slash-commands');
 const rinse = require('../utils/urlrinse.js')
 
 module.exports = {
@@ -6,15 +7,14 @@ module.exports = {
   description: 'de-referrer',
   options: [
     {
-      name: 'URL',
+      name: 'url',
       description: 'URL to derefer',
-      type: 3,
+      type: ApplicationCommandOptionType.STRING,
       required: true,
     }
   ],
   execute: async ({ interaction, response }) => {
-    // Get the raw values from Discord
-    const rawURL = ((interaction.data.options.find(opt => opt.name === 'URL') || {}).value || '').trim()
+    const rawURL = ((interaction.data.options.find(opt => opt.name === 'url') || {}).value || '').trim()
     const cleaned = rinse.defer(rawURL)
     return response({
       type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,

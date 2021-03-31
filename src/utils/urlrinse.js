@@ -14,7 +14,7 @@ function defer(url) {
 
 async function unshorten(url) {
     const response = await fetch(url)
-    return response.url;
+    return response.url
 }
 
 module.exports = {

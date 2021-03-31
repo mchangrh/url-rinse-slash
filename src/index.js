@@ -1,5 +1,5 @@
 const { InteractionType, InteractionResponseType, InteractionResponseFlags, verifyKey } = require('discord-interactions');
-const commands = ["clean", "defer", "removequery", "unshort"];
+const commands = ["clean", "unshort", "defer", "removequery"];
 
 // Util to send a JSON response
 const jsonResponse = obj => new Response(JSON.stringify(obj), {
@@ -40,7 +40,7 @@ const handleInteraction = async ({ request, wait }) => {
 
   // Locate the command data
   const commandName = body.data.name;
-  if (!commands.find(e => e.name === commandName))
+  if (!commands.find(e => e === commandName))
     return new Response(null, { status: 404 });
 
   try {

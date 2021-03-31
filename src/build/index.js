@@ -1,8 +1,9 @@
 const path = require('path');
 const fs = require('fs').promises;
+require('dotenv').config()
 const { getCommands, registerCommands } = require('./commands');
 
-module.exports = async () => {
+const setup = async function() {
   // Get all our local commands
   const commands = getCommands();
 
@@ -20,3 +21,4 @@ module.exports = async () => {
     // Done
     console.log('Commands data ready to go!');
 };
+setup();

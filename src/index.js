@@ -1,5 +1,5 @@
 const { InteractionType, InteractionResponseType, InteractionResponseFlags, verifyKey } = require('discord-interactions');
-const commands = require("./build/data/commands.json");
+const commands = ["clean", "defer", "removequery", "unshort"];
 
 // Util to send a JSON response
 const jsonResponse = obj => new Response(JSON.stringify(obj), {
@@ -72,6 +72,15 @@ const handleRequest = async ({ request, wait }) => {
     return await handleInteraction({ request, wait });
   if (url.pathname === '/ping')
     return new Response('pong', {
+      headers: {
+        'Content-Type': 'text/plain',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Expires': '0',
+        'Surrogate-Control': 'no-store',
+      },
+    });
+  if (url.pathname === '/version')
+    return new Response(VERSION.substring(0,7), {
       headers: {
         'Content-Type': 'text/plain',
         'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',

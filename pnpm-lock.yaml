@@ -3,6 +3,7 @@ dependencies:
   slash-commands: 1.4.0
 devDependencies:
   deep-equal: 2.0.5
+  dotenv: 8.2.0
   webpack: 5.28.0
 lockfileVersion: 5.2
 packages:
@@ -264,6 +265,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-zKQB63xWLYbOZMyU+EcLrXnUCMuWkU8/SoH7jFvc99Y1amHqli3oPEkgoLWUmYckL+HCPuA7LXpNyXaFvoqIww==
+  /dotenv/8.2.0:
+    dev: true
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
   /electron-to-chromium/1.3.702:
     dev: true
     resolution:
@@ -864,5 +871,6 @@ packages:
 specifiers:
   deep-equal: ^2.0.5
   discord-interactions: ^2.0.2
+  dotenv: ^8.2.0
   slash-commands: ^1.4.0
   webpack: ^5.28.0

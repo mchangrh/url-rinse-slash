@@ -65,12 +65,12 @@ module.exports.registerCommands = async commands => {
     });
 
     // Define the commands and get what Discord currently has
-    const discordCommands = await interaction.getApplicationCommands();
+    const discordCommands = await interaction.getApplicationCommands("560253403545075719");
 
     // Remove old commands
     for (const command of discordCommands) {
         if (commands.find(cmd => cmd.name === command.name)) continue;
-        await interaction.deleteApplicationCommand(command.id);
+        await interaction.deleteApplicationCommand(command.id, "560253403545075719");
     }
 
     // Register or update the commands with Discord
@@ -97,7 +97,7 @@ module.exports.registerCommands = async commands => {
         }
 
         // Register the new command
-        const data = await interaction.createApplicationCommand(command);
+        const data = await interaction.createApplicationCommand(command, "560253403545075719");
         commandData.push({ ...command, ...data });
     }
 

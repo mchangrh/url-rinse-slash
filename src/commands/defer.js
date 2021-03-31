@@ -1,5 +1,5 @@
 const { InteractionResponseType } = require('discord-interactions');
-const rinse = require('../urils/urlrinse')
+const rinse = require('../utils/urlrinse')
 
 module.exports = {
   name: 'defer',

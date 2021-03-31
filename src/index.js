@@ -47,7 +47,7 @@ const handleInteraction = async ({ request, wait }) => {
     // Load in the command
     const command = require(`./commands/${commandName}.js`);
     // Execute
-    return await command.run({ interaction: body, response: jsonResponse, wait });
+    return await command.execute({ interaction: body, response: jsonResponse, wait });
   } catch (err) {
     // Catch & log any errors
     console.log(body);
@@ -110,4 +110,3 @@ addEventListener('fetch', event => {
     throw err;
   }));
 });
-

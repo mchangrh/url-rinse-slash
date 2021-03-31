@@ -13,13 +13,12 @@ module.exports = {
     }
   ],
   execute: async ({ interaction, response }) => {
-    // Get the raw values from Discord
     const rawURL = ((interaction.data.options.find(opt => opt.name === 'URL') || {}).value || '').trim()
-    const cleaned = await rinse.clean(rawURL).then((longUrl) => { rinse.removeQuery(longUrl)})
+    const longURL = await rinse.unshorten(rawURL)
     return response({
       type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
       data: {
-        content: cleaned
+        content: rinse.removeQuery(longURL)
       },
     });
   }

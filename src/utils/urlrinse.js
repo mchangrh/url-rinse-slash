@@ -8,33 +8,17 @@
     return noParam[0] // return first result from parameter split
 }
 
-/**
- * Unshortens a link
- * @param {String} url - URL to unshorten
- * @param {callback} resolve - callback for resolve
- * @param {callback} reject - callback for reject
- */
-function unshortenPromise(url, resolve, reject) {
-    const https = require("https")
-    // inspired by https://stackoverflow.com/a/62588602
-    https.get(url, (res) => {
-        if (res.statusCode === 301 || res.statusCode === 302) {
-            return unshortenPromise(res.headers.location, resolve, reject)
-        }
-        resolve(url)
-    })
-}
-
-async function unshorten(url) {
-    return new Promise((resolve, reject) => unshortenPromise(url, resolve, reject))
-}
-
 function defer(url) {
     return `https://anonym.to/?${url}`
 }
 
+async function unshorten(url) {
+    const response = await fetch(url)
+    return response.url;
+}
+
 module.exports = {
     removeQuery,
-    unshorten,
-    defer
+    defer,
+    unshorten
 }

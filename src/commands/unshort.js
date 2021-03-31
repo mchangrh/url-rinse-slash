@@ -1,5 +1,5 @@
 const { InteractionResponseType } = require('discord-interactions');
-const rinse = require('../utils/urlrinse')
+const rinse = require('../utils/urlrinse.js')
 
 module.exports = {
   name: 'unshort',

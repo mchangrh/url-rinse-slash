@@ -3,8 +3,8 @@ const { ApplicationCommandOptionType } = require('slash-commands');
 const rinse = require('url-rinse');
 
 module.exports = {
-  name: 'removequery',
-  description: 'Remove query in URL',
+  name: 'removeparam',
+  description: 'Remove parameters in URL',
   options: [
     {
       name: 'url',
@@ -15,7 +15,7 @@ module.exports = {
   ],
   execute: async ({ interaction, response }) => {
     const rawURL = ((interaction.data.options.find(opt => opt.name === 'url') || {}).value || '').trim()
-    const cleaned = rinse.removeQuery(rawURL)
+    const cleaned = rinse.removeParam(rawURL)
     return response({
       type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
       data: {

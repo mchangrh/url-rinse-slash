@@ -1,10 +1,40 @@
 const { InteractionType, InteractionResponseType, InteractionResponseFlags, verifyKey } = require('discord-interactions');
-const commands = ["clean", "unshort", "defer", "removequery", "shorten"];
+const rinse = require('url-rinse');
+const commands = ["clean", "unshort", "defer", "removeparam", "shorten"];
+const rinseCommands = ["/clean", "/unshort", "/defer", "/removeparam", "/reddit", "/amazon"]
+
+const handleGet = async (path, param) => {
+  switch (path) {
+    case "/clean":
+      const longURL = await rinse.swUnshorten(param);
+      return rinse.removeParam(longURL);
+     case "/unshort": 
+      const unshorturl = await rinse.swUnshorten(param);
+      return unshorturl
+    case "/defer":
+      return rinse.defer(param);
+    case "/removeparam":
+      return rinse.removeParam(param);
+    case "/reddit":
+      return rinse.reddit(param);
+    case "/amazon":
+      return rinse.amazon(param);
+  }
+}
 
 // Util to send a JSON response
 const jsonResponse = obj => new Response(JSON.stringify(obj), {
   headers: {
     'Content-Type': 'application/json',
+  },
+});
+
+const textResponse = text => new Response(text, {
+  headers: {
+    'Content-Type': 'text/plain',
+    'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+    'Expires': '0',
+    'Surrogate-Control': 'no-store',
   },
 });
 
@@ -70,24 +100,14 @@ const handleRequest = async ({ request, wait }) => {
   // Send interactions off to their own handler
   if (request.method === 'POST' && url.pathname === '/interactions')
     return await handleInteraction({ request, wait });
+  if (request.method === 'GET' && rinseCommands.includes(url.pathname)) {
+    const res = await handleGet(url.pathname, url.searchParams.get('url'));
+    return textResponse(res);
+  }
   if (url.pathname === '/ping')
-    return new Response('pong', {
-      headers: {
-        'Content-Type': 'text/plain',
-        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-        'Expires': '0',
-        'Surrogate-Control': 'no-store',
-      },
-    });
+    return textResponse('ping');
   if (url.pathname === '/version')
-    return new Response(VERSION.substring(0,7), {
-      headers: {
-        'Content-Type': 'text/plain',
-        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-        'Expires': '0',
-        'Surrogate-Control': 'no-store',
-      },
-    });
+    return textResponse(VERSION.substring(0,7));
   if (url.pathname === '/invite')
     return new Response(null, {
       status: 301,
@@ -96,7 +116,7 @@ const handleRequest = async ({ request, wait }) => {
       }
     });
   return new Response(null, { status: 404 });
-};
+}
 
 // Register the worker listener
 addEventListener('fetch', event => {

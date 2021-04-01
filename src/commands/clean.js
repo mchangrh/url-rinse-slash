@@ -19,7 +19,7 @@ module.exports = {
     return response({
       type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
       data: {
-        content: rinse.removeQuery(longURL)
+        content: rinse.removeParam(longURL)
       },
     });
   }

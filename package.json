@@ -27,7 +27,7 @@
   "dependencies": {
     "discord-interactions": "^2.0.2",
     "slash-commands": "^1.4.0",
-    "url-rinse": "^1.0.2"
+    "url-rinse": "^2.0.0"
   },
   "devDependencies": {
     "deep-equal": "^2.0.5",

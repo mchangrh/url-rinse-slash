@@ -1,5 +1,5 @@
 const { InteractionType, InteractionResponseType, InteractionResponseFlags, verifyKey } = require('discord-interactions');
-const commands = ["clean", "unshort", "defer", "removequery"];
+const commands = ["clean", "unshort", "defer", "removequery", "shorten"];
 
 // Util to send a JSON response
 const jsonResponse = obj => new Response(JSON.stringify(obj), {

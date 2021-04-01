@@ -1,6 +1,6 @@
 const { InteractionResponseType } = require('discord-interactions');
 const { ApplicationCommandOptionType } = require('slash-commands');
-const rinse = require('../utils/urlrinse.js')
+const rinse = require('url-rinse');
 
 module.exports = {
   name: 'removequery',

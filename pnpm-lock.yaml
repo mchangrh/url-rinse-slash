@@ -1,6 +1,7 @@
 dependencies:
   discord-interactions: 2.0.2
   slash-commands: 1.4.0
+  url-rinse: 1.0.2
 devDependencies:
   deep-equal: 2.0.5
   dotenv: 8.2.0
@@ -775,6 +776,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
+  /url-rinse/1.0.2:
+    dev: false
+    resolution:
+      integrity: sha512-bq5DOlKWcBHOxwkC15k7rB5H9JWWzrgxNjunZqXOHZx7tVwxlp2mFQzpxtKZBY9tswoLKdsrnmZfMtQ8PLWglA==
   /watchpack/2.1.1:
     dependencies:
       glob-to-regexp: 0.4.1
@@ -873,4 +878,5 @@ specifiers:
   discord-interactions: ^2.0.2
   dotenv: ^8.2.0
   slash-commands: ^1.4.0
+  url-rinse: ^1.0.2
   webpack: ^5.28.0

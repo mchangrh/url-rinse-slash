@@ -27,11 +27,11 @@
   "dependencies": {
     "discord-interactions": "^2.0.2",
     "slash-commands": "^1.4.0",
-    "url-rinse": "^2.0.0"
+    "url-rinse": "^2.0.2"
   },
   "devDependencies": {
     "deep-equal": "^2.0.5",
     "dotenv": "^8.2.0",
-    "webpack": "^5.28.0"
+    "webpack": "^5.31.0"
   }
 }

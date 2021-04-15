@@ -5,18 +5,18 @@ specifiers:
   discord-interactions: ^2.0.2
   dotenv: ^8.2.0
   slash-commands: ^1.4.0
-  url-rinse: ^2.0.2
-  webpack: ^5.31.0
+  url-rinse: ^2.0.3
+  webpack: ^5.33.2
 
 dependencies:
   discord-interactions: 2.0.2
   slash-commands: 1.4.0
-  url-rinse: 2.0.2
+  url-rinse: 2.0.3
 
 devDependencies:
   deep-equal: 2.0.5
   dotenv: 8.2.0
-  webpack: 5.31.0
+  webpack: 5.33.2
 
 packages:
 
@@ -695,7 +695,7 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /terser-webpack-plugin/5.1.1_webpack@5.31.0:
+  /terser-webpack-plugin/5.1.1_webpack@5.33.2:
     resolution: {integrity: sha512-5XNNXZiR8YO6X6KhSGXfY0QrGrCRlSwAEjIIrlRQR4W8nP69TaJUlh3bkuac6zzgspiGPfKEHcY295MMVExl5Q==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -707,7 +707,7 @@ packages:
       serialize-javascript: 5.0.1
       source-map: 0.6.1
       terser: 5.6.1
-      webpack: 5.31.0
+      webpack: 5.33.2
     dev: true
 
   /terser/5.6.1:
@@ -743,8 +743,8 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /url-rinse/2.0.2:
-    resolution: {integrity: sha512-BJp83gFsVBHdFJ6lWH+9O74dYd17+7ERVIDvSHOuuqmmP7kVBqPTL0wrJzvBdSI6XuAqlWXznAMd2Kz82G/sRQ==}
+  /url-rinse/2.0.3:
+    resolution: {integrity: sha512-7DxcwpKiuCkY3wjkh13WZNKSVuE69dVFNgFjXFoXa0ArxtHmKG4I/dXZE9mhfJEjrNxQup1kar/lvGXIFq8h3w==}
     dev: false
 
   /watchpack/2.1.1:
@@ -763,8 +763,8 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /webpack/5.31.0:
-    resolution: {integrity: sha512-3fUfZT/FUuThWSSyL32Fsh7weUUfYP/Fjc/cGSbla5KiSo0GtI1JMssCRUopJTvmLjrw05R2q7rlLtiKdSzkzQ==}
+  /webpack/5.33.2:
+    resolution: {integrity: sha512-X4b7F1sYBmJx8mlh2B7mV5szEkE0jYNJ2y3akgAP0ERi0vLCG1VvdsIxt8lFd4st6SUy0lf7W0CCQS566MBpJg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -793,7 +793,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 3.0.0
       tapable: 2.2.0
-      terser-webpack-plugin: 5.1.1_webpack@5.31.0
+      terser-webpack-plugin: 5.1.1_webpack@5.33.2
       watchpack: 2.1.1
       webpack-sources: 2.2.0
     dev: true

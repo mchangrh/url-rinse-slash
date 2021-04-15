@@ -32,13 +32,12 @@ module.exports = {
   ],
   execute: async ({ interaction, response }) => {
     const rawUrl = ((interaction.data.options.find(opt => opt.name === 'url') || {}).value || '').trim()
-    const type = ((interaction.data.options.find(opt => opt.name === 'site') || {}).value || '').trim()
+    const site = ((interaction.data.options.find(opt => opt.name === 'site') || {}).value || '').trim()
     let result = ""
-    switch(type) {
-      case reddit:
-        result = rinse.reddit(rawUrl)
-      case amazon:
-        result = rinse.amazon(rawUrl)        
+    if(site === "reddit") {
+      result = rinse.reddit(rawUrl)
+    } else {
+      result = rinse.amazon(rawUrl)        
     }
     return response({
       type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,

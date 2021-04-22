@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <style>
+            @import url(https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css);
+        </style>
+    </head>
+    <body>
+        <form action="https://url-rinse.mchang.workers.dev" method="get">
+            <div class="row">
+                <div class="six columns">
+                    <label for="url">URL to clean</label>
+                    <input type="text" class="u-full-width" id="url">
+                </div>
+                <div class="six columns">
+                    <label for="method">Clean Method</label>
+                    <select class="u-full-width" id="method">
+                        <option value="clean">unshorten and remove parameters</option>
+                        <option value="unshort">unshorten url</option>
+                        <option value="defer">remove referer</option>
+                        <option value="removeparam">remove parameters</option>
+                        <option value="deamp">clean AMP url</option>
+                        <option value="reddit">clean reddit url</option>
+                        <option value="amazon">clean amazon url</option>
+                    </select>
+                </div>
+            </div>
+            <input class="button-primary" type="submit" value="Submit">
+        </form>
+    </body>
+</html>

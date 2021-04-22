@@ -3,21 +3,23 @@ const rinse = require('url-rinse');
 const commands = ["clean", "unshort", "defer", "removeparam", "shorten"];
 const rinseCommands = ["/clean", "/unshort", "/defer", "/removeparam", "/reddit", "/amazon"]
 
-const handleGet = async (path, param) => {
-  switch (path) {
-    case "/clean":
+const handleGet = async ( method, param) => {
+  switch (method) {
+    case "clean":
       const longURL = await rinse.swUnshorten(param);
       return rinse.removeParam(longURL);
-     case "/unshort": 
+     case "unshort": 
       const unshorturl = await rinse.swUnshorten(param);
       return unshorturl
-    case "/defer":
+    case "defer":
       return rinse.defer(param);
-    case "/removeparam":
+    case "removeparam":
       return rinse.removeParam(param);
-    case "/reddit":
+    case "deamp": 
+      return rinse.deAmp(param)
+    case "reddit":
       return rinse.reddit(param);
-    case "/amazon":
+    case "amazon":
       return rinse.amazon(param);
   }
 }
@@ -100,8 +102,8 @@ const handleRequest = async ({ request, wait }) => {
   // Send interactions off to their own handler
   if (request.method === 'POST' && url.pathname === '/interactions')
     return await handleInteraction({ request, wait });
-  if (request.method === 'GET' && rinseCommands.includes(url.pathname)) {
-    const res = await handleGet(url.pathname, url.searchParams.get('url'));
+  if (request.method === 'GET') {
+    const res = await handleGet(url.searchParams.get('method'), url.searchParams.get('url'));
     return textResponse(res);
   }
   if (url.pathname === '/ping')
